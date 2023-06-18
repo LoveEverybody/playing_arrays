@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   let mainArray = [];
+  let oddArray = [];
+  let consecutiveOddCount = 0;
 
   // Obtém uma referência para o campo de entrada e o botão de envio
   const inputNumber = document.getElementById("inputNumber");
   const submitButton = document.getElementById("submitButton");
   const showArray = document.querySelector("#showArray p");
+  const showOddArray = document.querySelector("#showOddArray p");
 
   // Adiciona um ouvinte de evento para o clique no botão de envio
   submitButton.addEventListener("click", () => {
@@ -22,22 +25,43 @@ document.addEventListener("DOMContentLoaded", () => {
   function submitNumber() {
     // Obtém o valor digitado no campo de entrada
     const numberValue = inputNumber.value;
-    mainArray.unshift(Number(numberValue));
+    
+    // Valida o número antes de adicioná-lo ao array
+    if (validateNumber(numberValue)) {
+      const confirmAdd = confirm("Deseja adicionar o número " + numberValue + " ao array?");
+      if (confirmAdd) {
+        const number = Number(numberValue);
+        mainArray.unshift(number);
 
-    // Limpa o campo de entrada
-    inputNumber.value = "";
+        if (number % 2 === 1) {
+          consecutiveOddCount++;
+        } else {
+          if (consecutiveOddCount > 0) {
+            oddArray.unshift(consecutiveOddCount);
+            consecutiveOddCount = 0;
+          }
+        }
 
-    // Exibe os valores digitados com um espaço entre eles
-    showArray.textContent = mainArray.join(" ");
+        // Limpa o campo de entrada
+        inputNumber.value = "";
+
+        // Exibe os valores digitados com um espaço entre eles
+        showArray.textContent = mainArray.join("|");
+        showOddArray.textContent = oddArray.join(", ");
+      }
+    } else {
+      inputNumber.value = "";
+      alert("Digite um número entre 0 e 36.");
+    }
   }
 });
 
-function validateNumber() {
-  var input = document.getElementById("inputNumber");
-  var value = parseInt(input.value);
+function validateNumber(value) {
+  var parsedValue = parseInt(value);
 
-  if (isNaN(value) || value < 0 || value > 36) {
-    input.value = "";
-    alert("Digite um número entre 0 e 36.");
+  if (isNaN(parsedValue) || parsedValue < 0 || parsedValue > 36) {
+    return false;
   }
+
+  return true;
 }
