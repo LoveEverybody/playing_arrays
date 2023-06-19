@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Array  </title>
+  <title>Array</title>
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <h1>Creating and Comparing Number's Array</h1>
 
-  <label for="inputNumber">Digite um número:</label>
-  <input type="text" id="inputNumber" oninput="validateNumber()" onkeydown="handleKeyDown(event)">
-
-  <button id="submitButton">Enviar</button>
+  <div id="inputContainer">
+    <span>Digite um numero:</span>
+    <input type="text" id="inputNumber" oninput="validateNumber()" onkeydown="handleKeyDown(event)">
+    <button id="submitButton">Enviar</button>
+  </div>
 
   <div id="showArray">
-    <h4></h4>
-    <p></p>    
+    <h4>Main Array:</h4>
+    <p></p>
   </div>
 
   <div id="showOddArray">
@@ -22,6 +23,21 @@
     <p></p>
   </div>
 
-<script src="index.js"></script>
+  <div id="showEvenArray">
+    <h4>Even Array:</h4>
+    <p></p>
+  </div>
+
+  <div id="showSums">
+    <div id="showOddSum">
+      <h4><span id="oddSumLabel">Sum of Odd Numbers:</span> <span id="oddSumValue"></span></h4>
+    </div>
+
+    <div id="showEvenSum">
+      <h4><span id="evenSumLabel">Sum of Even Numbers:</span> <span id="evenSumValue"></span></h4>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
