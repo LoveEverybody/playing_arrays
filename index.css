@@ -1,12 +1,14 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 10px;
   background-color: #f9f9f9;
 }
 
 h1 {
   text-align: center;
   color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 #inputContainer {
@@ -18,22 +20,23 @@ h1 {
 
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #555;
+  font-size: 14px;
 }
 
 input[type="text"] {
   width: calc(100% - 100px);
-  padding: 10px;
-  font-size: 16px;
+  padding: 5px;
+  font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px;
+  font-size: 14px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -47,9 +50,12 @@ button:hover {
 
 #showArray,
 #showOddArray,
-#showEvenArray {
-  margin-top: 20px;
-  padding: 10px;
+#showEvenArray,
+#showZeroGame,
+#showSums,
+#showNotInZeroGameCount {
+  margin-top: 10px;
+  padding: 5px;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 4px;
@@ -58,27 +64,25 @@ button:hover {
 #showArray h4,
 #showOddArray h4,
 #showEvenArray h4,
+#showZeroGame h4,
 #showOddSum h4,
-#showEvenSum h4 {
-  margin-bottom: 10px;
+#showEvenSum h4,
+#showNotInZeroGameCount h4 {
+  margin-bottom: 5px;
   color: #333;
+  font-size: 14px;
 }
 
 #showArray p,
 #showOddArray p,
-#showEvenArray p {
+#showEvenArray p,
+#showZeroGame p,
+#showOddSum p,
+#showEvenSum p,
+#showNotInZeroGameCount p {
   white-space: pre-wrap;
   font-family: monospace;
   color: #555;
   margin: 0;
+  font-size: 12px;
 }
-
-#showSums {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-
-#showOddSum,
-#showEven

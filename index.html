@@ -8,8 +8,8 @@
   <h1>Creating and Comparing Number's Array</h1>
 
   <div id="inputContainer">
-    <span>Digite um numero:</span>
-    <input type="text" id="inputNumber" oninput="validateNumber()" onkeydown="handleKeyDown(event)">
+    <label for="inputNumber">Digite um número:</label>
+    <input type="text" id="inputNumber">
     <button id="submitButton">Enviar</button>
   </div>
 
@@ -28,6 +28,11 @@
     <p></p>
   </div>
 
+  <div id="showZeroGame">
+    <h4>Zero Game Array:</h4>
+    <p></p>
+  </div>
+  
   <div id="showSums">
     <div id="showOddSum">
       <h4><span id="oddSumLabel">Sum of Odd Numbers:</span> <span id="oddSumValue"></span></h4>
@@ -38,6 +43,11 @@
     </div>
   </div>
 
+  <div id="showNotInZeroGameCount">
+    <h4>Not in Zero Game Count:</h4>
+    <p></p>
+  </div>
+  
   <script src="index.js"></script>
 </body>
 </html>

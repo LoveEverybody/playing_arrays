@@ -2,10 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let mainArray = [];
   let oddArray = [];
   let evenArray = [];
+  let zeroGame = [];
+  const zeroGameArray = [0, 2, 3, 4, 7, 12, 15, 18, 19, 21, 22, 25, 26, 28, 29, 32, 35];
   let consecutiveOddCount = 0;
   let consecutiveEvenCount = 0;
   let isPreviousNumberOdd = false;
   let isPreviousNumberEven = false;
+  let notInZeroGameCount = 0; // Variável para contar o número de vezes que um número não está presente em zeroGameArray
 
   // Obtém uma referência para o campo de entrada e o botão de envio
   const inputNumber = document.getElementById("inputNumber");
@@ -15,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const showEvenArray = document.querySelector("#showEvenArray p");
   const showOddSum = document.getElementById("oddSumValue");
   const showEvenSum = document.getElementById("evenSumValue");
+  const showZeroGame = document.getElementById("showZeroGame").querySelector("p");
+  const showNotInZeroGameCount = document.getElementById("showNotInZeroGameCount").querySelector("p");
 
   // Adiciona um ouvinte de evento para o clique no botão de envio
   submitButton.addEventListener("click", () => {
@@ -30,10 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Função para enviar o número digitado
   function submitNumber() {
-
     // Obtém o valor digitado no campo de entrada
     const numberValue = inputNumber.value;
-    
+
     // Valida o número antes de adicioná-lo ao array
     if (validateNumber(numberValue)) {
       const confirmAdd = confirm("Deseja adicionar o número " + numberValue + " ao array?");
@@ -50,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } else {
           if (isPreviousNumberOdd) {
-            isPreviousNumberOdd = false;     
+            isPreviousNumberOdd = false;
             oddArray.unshift(consecutiveOddCount);
           }
         }
@@ -69,6 +73,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
 
+        if (!zeroGameArray.includes(number)) {
+          notInZeroGameCount++;
+          zeroGame.unshift(notInZeroGameCount);
+        } else {
+          notInZeroGameCount = 0;
+         // zeroGame.unshift(0);
+        }
+
         // Limpa o campo de entrada
         inputNumber.value = "";
 
@@ -80,6 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Exibe a array dos números pares
         showEvenArray.textContent = evenArray.join(", ");
+
+        // Exibe a array zeroGame
+        showZeroGame.textContent = zeroGame.join(", ");
+
+        
       }
     } else {
       inputNumber.value = "";
@@ -87,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     showOddSum.textContent = consecutiveOddCount;
     showEvenSum.textContent = consecutiveEvenCount;
+    showNotInZeroGameCount.textContent = notInZeroGameCount;
   }
 });
 
